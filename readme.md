@@ -1,7 +1,7 @@
 # jcloxcs
 
 
-An implementation of [Crafting Interpreters](https://craftinginterpreters.com/)’ [lox](https://github.com/munificent/craftinginterpreters) programming languages that uses the parse tree from [jlox](https://github.com/drewbanas/jloxcs) to generate bytecode for the [clox](https://github.com/drewbanas/cloxcs) virtual machine. Coded in C#.
+An implementation of [Crafting Interpreters](https://craftinginterpreters.com/)’ [lox](https://github.com/munificent/craftinginterpreters) programming language that uses the parse tree from [jlox](https://github.com/drewbanas/jloxcs) to generate bytecode for the [clox](https://github.com/drewbanas/cloxcs) virtual machine. Coded in C#.
 
 ## Usage:
 `jcloxcs.exe [ scriptFile.lox ] [ -j ]`
