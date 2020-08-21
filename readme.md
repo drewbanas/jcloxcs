@@ -10,9 +10,9 @@ An implementation of [Crafting Interpreters](https://craftinginterpreters.com/)â
 * Donâ€™t type the square brackets.
 
 ## Major changes:
-* The clox compiler takes in list of statements just like the jlox interpreter. It then uses the visitor pattern to emit bytecode as it walks the parse tree.
+* The clox compiler takes in a list of statements just like the jlox interpreter. It then uses the visitor pattern to emit bytecode as it walks the parse tree.
 * The parser from jlox is modified to use a Pratt parser for expressions, similar to how it is done in clox.
-* The interpreter can be chosen between the clox (default) and jlox (-j command line switch).
+* The interpreter can be chosen between the clox (default) and jlox (__-j__ command line switch).
 
 ## Name spaces and file naming
 * __namespace lox, lox*.cs__: code shared by both jlox and clox. This includes the parser and some enum types that are now shared.
