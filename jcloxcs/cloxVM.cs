@@ -792,7 +792,7 @@ namespace clox
             ObjFunction function;
             ObjClosure closure;
 
-            Compiler compiler = new Compiler(statements); // TODO pass statements to constructor
+            Compiler compiler = new Compiler(statements);
             function = compiler.compile();
 
             if (Compiler.hadError || function == null)

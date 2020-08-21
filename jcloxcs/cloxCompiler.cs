@@ -229,7 +229,7 @@ namespace clox
         private static ObjFunction endCompiler()
         {
             emitReturn();
-            ObjFunction function = current.function; // no name when using AST compiler
+            ObjFunction function = current.function;
 
 #if DEBUG_PRINT_CODE
             if (!hadError)
@@ -395,7 +395,7 @@ namespace clox
             }
         }
 
-        bool function(Stmt.Function funStmt, FunctionType type)
+        void function(Stmt.Function funStmt, FunctionType type)
         {
             /* clox: funDeclaration */
             byte global = 0;
@@ -441,13 +441,11 @@ namespace clox
                 emitByte(compiler.upvalues[i].index);
             }
 
-            /* funDeclaration */
+            /* clox: funDeclaration */
             if (type == FunctionType.TYPE_FUNCTION)
             {
                 defineVariable(global);
             }
-
-            return false;
         }
 
         private static void declareVariable(Token name)
@@ -496,7 +494,7 @@ namespace clox
             return (byte)arguments.Count;
         }
 
-        byte getCall(Expr.Call gCallExpr)
+        void getCall(Expr.Call gCallExpr)
         {
             Expr.Get getExpr = (Expr.Get)gCallExpr.callee;
             compile(getExpr.object_);
@@ -507,8 +505,6 @@ namespace clox
             byte argCount = compile_argumentList(gCallExpr.arguments);
             emitBytes((byte)OpCode.OP_INVOKE, name);
             emitByte(argCount);
-
-            return name;
         }
 
         static void getNamedVariable(Token name)
@@ -555,7 +551,7 @@ namespace clox
             emitBytes((byte)setOp, (byte)arg);
         }
 
-        bool superCall(Expr.Call sCallExpr)
+        void superCall(Expr.Call sCallExpr)
         {
             Expr.Super superExpr = (Expr.Super)sCallExpr.callee;
 
@@ -581,9 +577,6 @@ namespace clox
 
             emitBytes((byte)OpCode.OP_SUPER_INVOKE, name);
             emitByte(argCount);
-
-
-            return true;
         }
 
         /***  VISITOR COMPILER  ***/
