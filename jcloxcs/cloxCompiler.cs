@@ -886,9 +886,9 @@ namespace clox
 
             if (callExpr.callee is Expr.Call) // nested calls
             {
-                argCount = compile_argumentList(callExpr.arguments);
                 visitCallExpr((Expr.Call)callExpr.callee);
 
+                argCount = compile_argumentList(callExpr.arguments);
                 emitBytes((byte)OpCode.OP_CALL, argCount);
                 return null;
             }
